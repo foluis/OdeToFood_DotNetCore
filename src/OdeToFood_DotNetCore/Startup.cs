@@ -38,13 +38,19 @@ namespace OdeToFood_DotNetCore
         {
             services.AddMvc();
 
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted;Trusted_Connection=True;";
+            //var connection = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = OdeToFood; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
+            var connectionString = Configuration["database:connection"];
+            services.AddDbContext<OdeToFoodDbContext>(options => 
+                options.UseSqlServer(connectionString));
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted;Trusted_Connection=True;";
-            //var connection = Configuration["database:connection"];
-            services.AddDbContext<OdeToFoodDbContext>(options => options.UseSqlServer(connection));
 
-            //services.AddEntityFrameworkSqlServer()
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted;Trusted_Connection=True;";
+            ////var connection = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = OdeToFood; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
+            //var connectionString = Configuration["database:connection"];
+            //services.AddEntityFrameworkSqlServer().AddDbContext<OdeToFoodDbContext>(options => options.UseSqlServer(connection));
 
+                        
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IGreeter, Greeter>();
 

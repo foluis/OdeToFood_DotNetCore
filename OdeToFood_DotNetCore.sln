@@ -14,6 +14,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "OdeToFood_DotNetCore", "src
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MVCCoreTemplate", "src\MVCCoreTemplate\MVCCoreTemplate.xproj", "{0064E078-5767-46F1-839B-384312691DA2}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MvcMovie", "src\MvcMovie\MvcMovie.xproj", "{F9F6FD14-DE82-45E3-89B6-9FA0F4221BAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{0064E078-5767-46F1-839B-384312691DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0064E078-5767-46F1-839B-384312691DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0064E078-5767-46F1-839B-384312691DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F6FD14-DE82-45E3-89B6-9FA0F4221BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F6FD14-DE82-45E3-89B6-9FA0F4221BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F6FD14-DE82-45E3-89B6-9FA0F4221BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F6FD14-DE82-45E3-89B6-9FA0F4221BAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +41,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{311B0982-B1F6-404F-9CC8-DCDC6CC5B7A1} = {49B3F851-8F8E-4D7B-943A-6C5BAF15FFD8}
 		{0064E078-5767-46F1-839B-384312691DA2} = {49B3F851-8F8E-4D7B-943A-6C5BAF15FFD8}
+		{F9F6FD14-DE82-45E3-89B6-9FA0F4221BAA} = {49B3F851-8F8E-4D7B-943A-6C5BAF15FFD8}
 	EndGlobalSection
 EndGlobal

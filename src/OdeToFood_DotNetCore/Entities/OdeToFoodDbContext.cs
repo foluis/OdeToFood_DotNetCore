@@ -4,9 +4,16 @@ namespace OdeToFood_DotNetCore.Entities
 {
     public class OdeToFoodDbContext : DbContext
     {
+        public OdeToFoodDbContext(DbContextOptions<OdeToFoodDbContext> options)
+            : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MyTest;Trusted_Connection=True;");
+            //builder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MyTestOdeToFood;Trusted_Connection=True;");
+            //builder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = OdeToFood; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+            base.OnConfiguring(builder);
         }
 
 
