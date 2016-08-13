@@ -14,10 +14,10 @@ namespace OdeToFood_DotNetCore.Entities
     {
         public int Id { get; set; }
 
-        //[Required,Display(Name ="Restaurant name"),MaxLength(20)]
+        [Required,MaxLength(20)]
         public string Name { get; set; }
 
-        //[Required]
+        [Required]
         public CuisineType Cuisine { get; set; }
     }
 }

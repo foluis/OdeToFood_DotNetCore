@@ -1,0 +1,4 @@
+﻿En la raiz del proyecto
+
+dotnet ef migrations add Initial
+dotnet ef database update
