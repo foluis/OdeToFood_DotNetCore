@@ -1,0 +1,17 @@
+﻿@model OdeToFood_DotNetCore.Entities.Restaurant
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.Name</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>    
+    <div>Id: @Model.Id</div>
+    <div>Cousine: @Model.Cuisine</div>
+    <div>
+        @Html.ActionLink("Home","Index")
+    </div>
+</body>
+</html>

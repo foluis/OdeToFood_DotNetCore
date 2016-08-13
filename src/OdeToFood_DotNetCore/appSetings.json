@@ -1,0 +1,6 @@
+﻿{
+  "greating": "Hello perro loco desde el app",
+  "database": {
+    "connection": "Server=(localdb)\\mssqllocaldb;Database=OdeToFood;Trusted_Connection=True;"
+  }
+}
