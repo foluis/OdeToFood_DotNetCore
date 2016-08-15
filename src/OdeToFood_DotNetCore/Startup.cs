@@ -10,7 +10,8 @@ using System;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using OdeToFood_DotNetCore.Entities;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace OdeToFood_DotNetCore
 {
@@ -36,21 +37,37 @@ namespace OdeToFood_DotNetCore
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-
             //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted;Trusted_Connection=True;";
             //var connection = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = OdeToFood; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
             var connectionString = Configuration["database:connection"];
             services.AddDbContext<OdeToFoodDbContext>(options => 
                 options.UseSqlServer(connectionString));
 
+            //services.AddIdentity<User,IdentityRole>()
+            //    .AddEntityFrameworkStores<OdeToFoodDbContext>();
+
+            services.AddIdentity<User, IdentityRole>(config => {
+                // Config here
+                //config.User.RequireUniqueEmail = true;
+                config.Password = new PasswordOptions
+                {
+                    RequireDigit = false,            //Caracteres numericos
+                    RequireNonAlphanumeric = false, //Caracteres especiales
+                    RequireUppercase = false,       //Caracteres Mayuscula
+                    RequireLowercase = false,        //Caracteres minuscula
+                    RequiredLength = 8,             //Longitud
+                };
+            })
+               .AddEntityFrameworkStores<OdeToFoodDbContext>();
+
+            services.AddMvc();
 
             //var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted;Trusted_Connection=True;";
             ////var connection = @"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = OdeToFood; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False";
             //var connectionString = Configuration["database:connection"];
             //services.AddEntityFrameworkSqlServer().AddDbContext<OdeToFoodDbContext>(options => options.UseSqlServer(connection));
 
-                        
+
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IGreeter, Greeter>();
 
@@ -83,6 +100,8 @@ namespace OdeToFood_DotNetCore
 
             //app.UseMvcWithDefaultRoute();
 
+            app.UseIdentity();
+
             app.UseMvc(ConfigureRoutes);
 
             app.Run(async (context) =>
@@ -96,6 +115,8 @@ namespace OdeToFood_DotNetCore
                 await context.Response.WriteAsync(Configuration["greating2"]);
                 await context.Response.WriteAsync("<br>");
                 await context.Response.WriteAsync(greeter.GetGreeting());
+                await context.Response.WriteAsync("<br>");
+                await context.Response.WriteAsync("Pasó hasta el final");
             });
         }
 

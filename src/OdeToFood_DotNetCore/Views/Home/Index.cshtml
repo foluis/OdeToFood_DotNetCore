@@ -11,25 +11,30 @@
     <a asp-controller="Home" asp-action="Create">Create</a>
 </div>
 <table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-    </tr>
+
     @foreach (var restaurant in Model.Restaurants)
     {
-        <tr>
-            
-           
-            <td>@restaurant.Name</td>
-            <td>@restaurant.Cuisine</td>
-            <td>
-                <a asp-action="Edit" asp-route-id=@restaurant.Id>Edit</a>
-                @Html.ActionLink("Details", "Details", new { id = @restaurant.Id })
-            </td>
-        </tr>
+        @Html.Partial("_Summary", restaurant)
     }
+    @*<tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        foreach (var restaurant in Model.Restaurants)
+            {
+                <tr>
+
+
+                    <td>@restaurant.Name</td>
+                    <td>@restaurant.Cuisine</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id=@restaurant.Id>Edit</a>
+                        @Html.ActionLink("Details", "Details", new { id = @restaurant.Id })
+                    </td>
+                </tr>
+            }*@
 </table>
 
-@section footer{
+@*@section footer{
     <div>@Model.CurrentGreetings</div>
-}
+}*@

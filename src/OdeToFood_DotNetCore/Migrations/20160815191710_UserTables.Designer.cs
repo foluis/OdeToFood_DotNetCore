@@ -8,9 +8,10 @@ using OdeToFood_DotNetCore.Entities;
 namespace OdeToFood_DotNetCore.Migrations
 {
     [DbContext(typeof(OdeToFoodDbContext))]
-    partial class OdeToFoodDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160815191710_UserTables")]
+    partial class UserTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
