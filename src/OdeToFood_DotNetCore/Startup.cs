@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using OdeToFood_DotNetCore.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.DotNet.InternalAbstractions;
 
 namespace OdeToFood_DotNetCore
 {
@@ -84,7 +85,8 @@ namespace OdeToFood_DotNetCore
             IHostingEnvironment env, 
             ILoggerFactory loggerFactory,
             IGreeter greeter)
-        {
+        {   
+
             loggerFactory.AddConsole();
 
             if (env.IsDevelopment())
@@ -97,6 +99,8 @@ namespace OdeToFood_DotNetCore
 
             //Same than two above
             app.UseFileServer();
+
+            app.UseNodeModules(env);
 
             //app.UseMvcWithDefaultRoute();
 
