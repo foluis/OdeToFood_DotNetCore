@@ -1,36 +1,28 @@
-﻿@using OdeToFood_DotNetCore.Entities
+﻿
 @model Restaurant
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Create</title>
-</head>
-<body>
-    <h1>Create</h1>
+@{
+    ViewBag.Title = "Create";
+}
+<h1>Create</h1>
 
-    @using (Html.BeginForm())
-    {
-        <div>
-            @Html.LabelFor(m => m.Name)
-            @*@Html.TextBoxFor(m => m.Name)*@
-            @Html.EditorFor(m => m.Name)
-            @Html.ValidationMessageFor(m => m.Name)
-        </div>
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m => m.Name)
+        @*@Html.TextBoxFor(m => m.Name)*@
+        @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
         <div>
             @Html.LabelFor(m => m.Cuisine)
-            @Html.DropDownListFor(m => m.Cuisine, Html.GetEnumSelectList(typeof(CuisineType)),"Select")
+            @Html.DropDownListFor(m => m.Cuisine, Html.GetEnumSelectList(typeof(CuisineType)), "Select")
             @Html.ValidationMessageFor(m => m.Cuisine)
         </div>
         <div>
             <input type="submit" name="Create" value="Save" />
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Cancel", "Index")
-    </div>
-
-</body>
-</html>
+}
+<div>
+    @Html.ActionLink("Cancel", "Index")
+</div>

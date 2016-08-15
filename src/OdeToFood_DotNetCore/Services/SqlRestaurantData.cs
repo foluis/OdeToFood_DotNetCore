@@ -21,6 +21,11 @@ namespace OdeToFood_DotNetCore.Services
             _context.SaveChanges();
         }
 
+        public int Commit()
+        {
+            return _context.SaveChanges();
+        }
+
         public Restaurant Get(int id)
         {
             return _context.Restaurants.FirstOrDefault(r => r.Id == id);

@@ -11,5 +11,7 @@ namespace OdeToFood_DotNetCore.Services
         IEnumerable<Restaurant> GetAll();
         Restaurant Get(int id);
         void Add(Restaurant newRestaurant);
+
+        int Commit();
     }
 }

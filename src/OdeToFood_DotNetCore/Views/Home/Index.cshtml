@@ -1,31 +1,35 @@
 ﻿@model OdeToFood_DotNetCore.ViewModels.HomePageViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome</h1>
-    <h3>@Model.CurrentGreetings</h3>
-    <div>
-        @Html.ActionLink("Create New", "Create")
-    </div>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-        </tr>
+@{
+    ViewBag.Title = "Home";
+}
 
-        @foreach (var restaurant in Model.Restaurants)
-        {
-            <tr>
-                <td>@Html.ActionLink(@restaurant.Id.ToString(), "Details", new { id = @restaurant.Id })</td>
-                <td>@restaurant.Name</td>
-                <td>@restaurant.Cuisine</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+<h1>Welcome</h1>
+
+<div>
+    @*@Html.ActionLink("Create", "Create")*@
+    <a asp-controller="Home" asp-action="Create">Create</a>
+</div>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    @foreach (var restaurant in Model.Restaurants)
+    {
+        <tr>
+            
+           
+            <td>@restaurant.Name</td>
+            <td>@restaurant.Cuisine</td>
+            <td>
+                <a asp-action="Edit" asp-route-id=@restaurant.Id>Edit</a>
+                @Html.ActionLink("Details", "Details", new { id = @restaurant.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+@section footer{
+    <div>@Model.CurrentGreetings</div>
+}

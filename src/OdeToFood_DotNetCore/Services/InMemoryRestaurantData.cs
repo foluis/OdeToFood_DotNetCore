@@ -34,5 +34,10 @@ namespace OdeToFood_DotNetCore.Services
             newRestaurant.Id = _restaurants.Max(r => r.Id) + 1;
             _restaurants.Add(newRestaurant);
         }
+
+        public int Commit()
+        {
+            return 0;
+        }
     }
 }

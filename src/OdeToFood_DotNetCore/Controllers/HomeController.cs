@@ -26,6 +26,31 @@ namespace OdeToFood_DotNetCore.Controllers
             return View(model);
         }
 
+        //[HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var model = _restaurantData.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Restaurant model)
+        {
+            var restaurant = _restaurantData.Get(id);
+            if (restaurant != null && ModelState.IsValid)
+            {
+                restaurant.Name = model.Name;
+                restaurant.Cuisine = model.Cuisine;
+                _restaurantData.Commit();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
         public ViewResult Create()
         {
             return View();
@@ -34,29 +59,29 @@ namespace OdeToFood_DotNetCore.Controllers
         [HttpPost]
         public IActionResult Create(RestaurantEditViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var restaurant = new Restaurant();
                 restaurant.Name = model.Name;
                 restaurant.Cuisine = model.Cuisine;
 
                 _restaurantData.Add(restaurant);
+                _restaurantData.Commit();
 
                 return RedirectToAction("Index");
             }
 
             return View();
-            
         }
 
         public IActionResult Details(int id)
         {
             var model = _restaurantData.Get(id);
-            if(model == null)
+            if (model == null)
             {
                 return RedirectToAction("Index");
             }
-            
+
             return View(model);
         }
 
